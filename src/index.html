@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhagavad Gita</title>
+  <meta
+    name="description"
+    content="An animated, dual-language Bhagavad Gita experience built by Sanatan AI"
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scene" aria-hidden="true">
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="orb orb-c"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-card">
+      <span class="loader-ring" aria-hidden="true"></span>
+      <p data-i18n="loading">Preparing sacred verses...</p>
+    </div>
+  </div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <h1 data-i18n="brandHeader">Bhagavad Gita</h1>
+      </div>
+
+      <nav class="primary-nav" aria-label="Main Sections">
+        <button class="nav-item active" data-section-target="home" data-i18n="navHome">Home</button>
+        <button class="nav-item" data-section-target="chapters" data-i18n="navChapters">Chapters</button>
+        <button class="nav-item" data-section-target="verses" data-i18n="navVerses">Verses</button>
+      </nav>
+
+      <div class="topbar-controls">
+        <div class="lang-switch" role="group" aria-label="Language Switch">
+          <button class="lang-btn active" data-lang="english">EN</button>
+          <button class="lang-btn" data-lang="hindi">हि</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="showcase center-flex">
+      <h1 data-i18n="brandHeader">The Bhagavat Gita</h1>
+    </main>
+
+    <main class="main-content">
+      <section class="panel active" data-section="home" id="homeSection">
+        <div class="hero reveal">
+          <article class="hero-spotlight" id="homeSpotlight"></article>
+        </div>
+      </section>
+
+      <section class="panel" data-section="chapters" id="chaptersSection">
+        <header class="section-head reveal">
+          <p class="section-kicker" data-i18n="chapterKicker">All 18 chapters</p>
+          <h2 data-i18n="chapterTitle">Bhagavad Gita Chapters</h2>
+          <p data-i18n="chapterSubtitle">Browse chapter themes, verse counts, and jump straight into study mode.</p>
+        </header>
+
+        <div class="chapter-toolbar reveal">
+          <input
+            id="chapterSearchInput"
+            class="text-input"
+            type="search"
+            data-i18n-placeholder="chapterSearchPlaceholder"
+            placeholder="Search chapter name, number, or meaning"
+          >
+        </div>
+
+        <div class="chapter-grid" id="chaptersGrid"></div>
+      </section>
+
+      <section class="panel" data-section="verses" id="versesSection">
+        <div class="verse-toolbar reveal">
+          <div class="control-block">
+            <label for="verseChapterFilter" data-i18n="filterChapter">Chapter</label>
+            <select id="verseChapterFilter"></select>
+          </div>
+          <div class="control-block grow">
+            <label for="verseSearchInput" data-i18n="filterSearch">Search</label>
+            <input
+              id="verseSearchInput"
+              class="text-input"
+              type="search"
+              data-i18n-placeholder="verseSearchPlaceholder"
+              placeholder="Search Sanskrit, transliteration, or translations"
+            >
+          </div>
+          <div class="control-block">
+            <label for="versePageSize" data-i18n="filterPerPage">Per page</label>
+            <select id="versePageSize">
+              <option value="6">6</option>
+              <option value="12" selected>12</option>
+              <option value="24">24</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="result-meta reveal" id="verseResultMeta"></p>
+        <div class="verse-list" id="versesList"></div>
+
+        <div class="pager reveal" id="versePager">
+          <button class="btn btn-ghost" id="prevPageBtn" data-i18n="pagerPrev">Previous</button>
+          <p id="pageInfo">1 / 1</p>
+          <button class="btn btn-ghost" id="nextPageBtn" data-i18n="pagerNext">Next</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        <span data-i18n="footerText"></span> | <a href="https://sanatan-ai.vercel.app" target="_blank" rel="noreferrer noopener">https://sanatan-ai.vercel.app</a>
+      </p>
+    </footer>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
