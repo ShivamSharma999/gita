@@ -5,6 +5,9 @@ echo ## Sanatan AI Gita Builder ##
 cmd /c npm run build:ts
 node ./scripts/fix-js-imports.js
 node ./scripts/copy-static.cjs
+set TAURI_SIGNING_PRIVATE_KEY="./src-tauri/target/private.key"
+set TAURI_SIGNING_PRIVATE_KEY_PASSWORD="shivam$@tauri"
+git tag -a 1.0.2 -m "Release version 1.0.2"
 set /p buildOrDev=Do you want to build the app or run the dev script? (build/dev/none):
 if "%buildOrDev%"=="build" (
     echo Building the app...

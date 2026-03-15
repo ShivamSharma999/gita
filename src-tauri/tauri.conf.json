@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "Bhagavat Gita",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "identifier": "com.sanatanai.gita",
   "build": {
     "frontendDist": "../dist"
@@ -29,11 +29,22 @@
       "icons/128x128@2x.png",
       "icons/icon.ico"
     ],
+    "createUpdaterArtifacts": true,
     "windows": {
-      "allowDowngrades": true,
-      "webviewInstallMode": {
-        "silent": true,
-        "type": "downloadBootstrapper"
+      "nsis": {
+        "installerIcon": "icons/icon.ico",
+        "sidebarImage": "../dist/assets/main.png"
+      }
+    }
+  },
+   "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEU5NTU4MkVFQjE2NTQ5QjAKUldTd1NXV3g3b0pWNmNodGo5SGpwNDlPY1d5YnY2enU5Q2k5VitZK0VhYlQwVVBnZi9VZkhvZHIK",
+      "endpoints": [
+        "https://github.com/ShivamSharma999/gita/releases/latest/download/latest.json"
+      ],
+      "windows": {
+        "installMode": "quiet"
       }
     }
   }
