@@ -42,12 +42,6 @@
     "nameEnglish": "English",
     "nameHindi": "Hindi",
     "previewTitle": "Language Preview",
-    "audioPlay": "Listen to recitation",
-    "audioPause": "Pause recitation",
-    "audioResume": "Resume recitation",
-    "audioLoading": "Loading audio...",
-    "audioRetry": "Retry audio",
-    "audioUnavailable": "Audio unavailable for this verse right now.",
     "loadError": "Could not load data files.",
     "brandHeader": "The Bhagavat Gita"
   },

@@ -4,6 +4,7 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "strict": true,
+    "noImplicitAny": false,
     "jsx": "preserve",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -11,7 +12,7 @@
     "allowJs": false,
     "checkJs": false,
     "noEmitOnError": true,
-    "outDir": "src",
+    "outDir": "dist",
     "rootDir": "src",
     "isolatedModules": true,
     "resolveJsonModule": true

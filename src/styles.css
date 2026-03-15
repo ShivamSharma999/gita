@@ -514,6 +514,7 @@ select:focus {
 }
 
 .verse-card {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
@@ -521,6 +522,40 @@ select:focus {
   padding: 1rem;
   display: grid;
   gap: 0.8rem;
+}
+
+.verse-actions {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  gap: 0.4rem;
+  z-index: 3;
+}
+
+.verse-action-btn {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(24, 42, 64, 0.18);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.verse-action-btn.verse-audio-action {
+  background: rgba(15, 118, 110, 0.14);
+  border-color: rgba(15, 118, 110, 0.35);
+}
+
+.verse-action-btn.verse-audio-action .material-symbols-rounded {
+  color: #0f766e;
+}
+
+.verse-action-btn .material-symbols-rounded {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 18px;
+  line-height: 1;
 }
 
 .verse-head {
@@ -545,13 +580,6 @@ select:focus {
   font-size: 1.05rem;
 }
 
-.chapter-chip {
-  font-size: 0.76rem;
-  padding: 0.26rem 0.58rem;
-  border-radius: 999px;
-  border: 1px solid rgba(26, 48, 72, 0.18);
-  background: rgba(255, 255, 255, 0.9);
-}
 
 .sanskrit-box {
   border-radius: var(--radius-sm);
@@ -566,35 +594,6 @@ select:focus {
   white-space: pre-line;
 }
 
-.verse-audio-control {
-  display: grid;
-  gap: 0.35rem;
-}
-
-.verse-audio-btn {
-  justify-self: flex-start;
-  min-width: 178px;
-  text-align: left;
-}
-
-.verse-audio-btn.is-active {
-  border-color: rgba(15, 118, 110, 0.4);
-  background: rgba(15, 118, 110, 0.12);
-}
-
-.verse-audio-btn.is-loading {
-  cursor: progress;
-}
-
-.audio-state-note {
-  margin: 0;
-  font-size: 0.78rem;
-  color: var(--muted);
-}
-
-.audio-state-note.error {
-  color: #8d4800;
-}
 
 .translation-grid {
   display: grid;
