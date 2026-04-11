@@ -1,0 +1,62 @@
+name: Make Tauri Release
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    permissions:
+      contents: write
+      id-token: write
+
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - name: Build tauri js app
+        continue-on-error: true
+        run: |
+          npm install
+          npm run build:ts
+          npm run build:static
+          npm run patch:imports
+          npm run tauri build
+
+      - name: Get version from Cargo.toml
+        id: get_version
+        run: |
+          echo "version=$(grep '^version' src-tauri/Cargo.toml | head -1 | cut -d '"' -f2)" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ steps.get_version.outputs.version }}-${{ github.run_number }}"
+          name: "Release v${{ steps.get_version.outputs.version }}-${{ github.run_number }}"
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Tauri Artifacts
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ steps.get_version.outputs.version }}-${{ github.run_number }}"
+          name: "Release v${{ steps.get_version.outputs.version }}-${{ github.run_number }}"
+          files: |
+            src-tauri/target/release/bundle/**/*.exe
+            src-tauri/target/release/bundle/**/*.msi
+            src-tauri/target/release/bundle/**/*.zip
+            src-tauri/target/release/bundle/**/*.dmg
+            src-tauri/target/release/bundle/**/*.AppImage
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

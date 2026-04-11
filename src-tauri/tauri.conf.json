@@ -1,0 +1,52 @@
+{
+  "$schema": "../scripts/config.schema.json",
+  "productName": "Bhagavat Gita",
+  "version": "1.0.3",
+  "identifier": "com.sanatanai.gita",
+  "build": {
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "Bhagavat Gita"
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "nsis",
+    "category": "Education",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.ico"
+    ],
+    "createUpdaterArtifacts": true,
+    "windows": {
+      "nsis": {
+        "template": "installer.nsi",
+        "installerIcon": "icons/icon.ico",
+        "sidebarImage": "./icons/main.bmp"
+      }
+    }
+  },
+   "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEU2RjQ2OUQ5ODY3OTNDNTgKUldSWVBIbUcyV24wNW1QN2pJOUxiN250SWlIZTNHamt2QWhFOGRHbjh1THRiTlQycnNQZ2NyQ1cK",
+      "endpoints": [
+        "https://github.com/ShivamSharma999/gita/releases/latest/download/latest.json"
+      ],
+      "dialog": true,
+      "active": true,
+      "windows": {
+        "installMode": "quiet"
+      }
+    }
+  }
+}

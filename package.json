@@ -1,0 +1,21 @@
+{
+  "name": "gita",
+  "private": true,
+  "version": "1.0.3",
+  "type": "module",
+  "scripts": {
+    "build:ts": "tsc --project tsconfig.json",
+    "build:static": "node ./scripts/copy-static.cjs",
+    "patch:imports": "node ./scripts/fix-js-imports.js",
+    "build": "npm run build:ts && npm run patch:imports && npm run build:static",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "typescript": "5.9.3"
+  },
+  "dependencies": {
+    "@tauri-apps/plugin-process": "^2.3.1",
+    "@tauri-apps/plugin-updater": "^2.10.0"
+  }
+}
